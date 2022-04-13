@@ -1,0 +1,74 @@
+﻿<Window x:Class="GoWPFDataTemplateIssue.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:go="http://schemas.nwoods.com/GoXam"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:gowpfdatatemplateissue="clr-namespace:GoWPFDataTemplateIssue"
+        mc:Ignorable="d"
+        Title="GoWPF DataTemplate Issue" Height="450" Width="800">
+
+    <UniformGrid Columns="1">
+        <UniformGrid Rows="1">
+            <!--Diagram as direct content-->
+            <GroupBox Header="Diagram as direct content">
+                <go:Diagram HasDefaultModel="True"
+                            IsReadOnly="False"
+                            AllowZoom="True"
+                            AllowDragOut="True"
+                            AllowDrop="True"
+                            GridVisible="True"
+                            NodeTemplate="{StaticResource NodeTemplate}"
+                            LinkTemplate="{StaticResource LinkTemplate}"
+                            GridSnapEnabled="True"
+                            GridSnapCellSize="10 10">
+                    <go:Diagram.Model>
+                        <go:UniversalGraphLinksModel />
+                    </go:Diagram.Model>
+                    <go:Diagram.ClickCreatingTool>
+                        <go:ClickCreatingTool DoubleClick="True">
+                            <go:ClickCreatingTool.PrototypeData>
+                                <gowpfdatatemplateissue:MoNodeData />
+                            </go:ClickCreatingTool.PrototypeData>
+                        </go:ClickCreatingTool>
+                    </go:Diagram.ClickCreatingTool>
+                    <go:Diagram.RotatingTool>
+                        <go:RotatingTool SnapAngleEpsilon="15" SnapAngleMultiple="15" />
+                    </go:Diagram.RotatingTool>
+                </go:Diagram>
+            </GroupBox>
+            
+            <!--Diagram as DataTemplate content-->
+            <GroupBox Header="Diagram as DataTemplate content">
+                <GroupBox.ContentTemplate>
+                    <DataTemplate>
+                        <go:Diagram HasDefaultModel="True"
+                                    IsReadOnly="False"
+                                    AllowZoom="True"
+                                    AllowDragOut="True"
+                                    AllowDrop="True"
+                                    GridVisible="True"
+                                    NodeTemplate="{StaticResource NodeTemplate}"
+                                    LinkTemplate="{StaticResource LinkTemplate}"
+                                    GridSnapEnabled="True"
+                                    GridSnapCellSize="10 10">
+                            <go:Diagram.Model>
+                                <go:UniversalGraphLinksModel />
+                            </go:Diagram.Model>
+                            <go:Diagram.ClickCreatingTool>
+                                <go:ClickCreatingTool DoubleClick="True">
+                                    <go:ClickCreatingTool.PrototypeData>
+                                        <gowpfdatatemplateissue:MoNodeData />
+                                    </go:ClickCreatingTool.PrototypeData>
+                                </go:ClickCreatingTool>
+                            </go:Diagram.ClickCreatingTool>
+                            <go:Diagram.RotatingTool>
+                                <go:RotatingTool SnapAngleEpsilon="15" SnapAngleMultiple="15" />
+                            </go:Diagram.RotatingTool>
+                        </go:Diagram>
+                    </DataTemplate>
+                </GroupBox.ContentTemplate>
+            </GroupBox>
+        </UniformGrid>
+
+    </UniformGrid>
+</Window>
